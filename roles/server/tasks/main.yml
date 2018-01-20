@@ -1,0 +1,51 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  become: yes
+  become_method: su
+  become_user: root
+
+
+- debconf:
+   name: mysql-server
+   question: mysql-server/root_password
+   vtype: password
+   value: "{{ mysql_admin_password }}"
+
+
+- debconf:
+   name: mysql-server
+   question: mysql-server/root_password_again
+   vtype: password
+   value: "{{ mysql_admin_password }}"
+
+ 
+- name: Install mysql-server
+  apt: name=mysql-server state=present
+  become: yes
+
+- debconf:
+   name: mysql-server
+   question: mysql-server/root_password
+   vtype: password
+   value: "password"
+
+
+- debconf:
+   name: mysql-server
+   question: mysql-server/root_password_again
+   vtype: password
+   value: "password"
+
+
+- name: Install required software
+  apt: name={{ item }} state=present
+  become: yes
+  with_items:
+    - apache2
+    #- mysql-server
+    - php-mysql
+    - php
+    - python3-pip
+    - python3-mysqldb
+    - libapache2-mod-php

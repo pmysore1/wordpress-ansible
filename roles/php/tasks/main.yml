@@ -1,7 +1,7 @@
 ---
 - name: Install php extensions
   apt: name={{ item }} state=present
-  sudo: yes
+  become: yes
   with_items:
     - php-gd 
     - php-ssh2

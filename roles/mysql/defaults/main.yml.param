@@ -1,0 +1,7 @@
+---
+wp_mysql_db: %WP_MYSQL_DB%
+wp_mysql_user: %WP_MYSQL_USER% 
+wp_mysql_password: %WP_MYSQL_PASSWORD%
+login_user: "{{ mysql_admin_user }}"
+login_password: "{{ mysql_admin_password }}"
+

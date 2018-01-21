@@ -1,7 +1,7 @@
 ---
-wp_mysql_db: new_wordpress
-wp_mysql_user: new_wordpress_user 
-wp_mysql_password: new_wordpress_pass
+wp_mysql_db: dbname1
+wp_mysql_user: dbuser1 
+wp_mysql_password: DBPasswor1d
 login_user: "{{ mysql_admin_user }}"
 login_password: "{{ mysql_admin_password }}"
 

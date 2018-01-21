@@ -11,6 +11,33 @@ NEW_WP_MYSQL_USER=%new_wordpress_user%
 NEW_WP_MYSQL_PASSWORD=%new_wordpress_pass%
 NEW_MY_SQL_ROOT_PASSWORD=%root_password%
 
+
+CFN_STACK_NAME=Candidate-4fLAbqwn7f_stack
+BUCKET_NAME=s3Candidate-4fLAbqwn7fBucket
+PEM_FILE_NAME=s3Candidate-4fLAbqwn7f
+
+
+aws cloudformation describe-stacks --stack-name CFN_STACK_NAME  --region us-east-1 > cfn.out
+
+WORD_PRESS_HOST_IP=`cat cfn.out | jq '.Stacks[] | .Outputs[] | select((.OutputKey | tostring) == "PrivateIP") | .OutputValue'`
+
+WORD_PRESS_HOST_IP= `echo $WORD_PRESS_HOST_IP | sed -e "s;\";;g"`
+
+echo $WORD_PRESS_HOST_IP
+
 sed -e "s;%WP_MYSQL_DB%;$NEW_WP_MYSQL_DB;g" -e "s;%WP_MYSQL_USER%;$NEW_WP_MYSQL_USER;g" -e "s;%WP_MYSQL_PASSWORD%;$NEW_WP_MYSQL_PASSWORD;g" $MYSQLDEFAULT_YML > $NEW_MYSQLDEFAULT_YML
 
 sed -e "s;%MY_SQL_ROOT_PASSWORD%;$NEW_MY_SQL_ROOT_PASSWORD;g" $SERVERDEFAULT_YML > $NEW_SERVERDEFAULT_YML 
+
+
+aws s3 cp  s3://$BUCKET_NAME/$PEM_FILE_NAME . --region us-east-1
+
+sh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
+
+scp -i $PEM_FILE_NAME ~/.ssh/id_rsa.pub $USER@$WORD_PRESS_HOST_IP:~
+ssh -t -i $PEM_FILE_NAME USER@$WORD_PRESS_HOST_IP < ssh_setup.sh
+
+rm $PEM_FILE_NAME
+
+#sudo ansible-playbook playbook.yml -i hosts -u root -e 'ansible_python_interpreter=/usr/bin/python3.5'
+

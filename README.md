@@ -3,7 +3,7 @@ This repository consists all required Ansible playbook and bash scripts needed f
 
 # Ansible related playbook and configuration files
 Ansible setup includes roles based configuration process where a playbook is devided in multiple steps based on role it plays. Within this set up we have following roles.
-server
+server<br>
 php
 mysql
 wordpress

@@ -32,12 +32,12 @@ server role is used for installing following components <br>
 - libapache2-mod-php<br>
 - Install MySQL database and configure root/admin password. This is passed as a parameter in CloudFormation temmplate
 
-### server role
+### php role
 php role installs following dependencies<br>
  - php-gd<br>
  - php-ssh2<br>
 
-### mysql
+### mysql role
 This role performs following tasks.<br>
 Values for below configuration is passed as parameter in CloudFormtion template.<br>
 - Creates MySQL database<br>

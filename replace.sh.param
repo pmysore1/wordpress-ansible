@@ -13,10 +13,11 @@ NEW_MY_SQL_ROOT_PASSWORD=%root_password%
 
 
 CFN_STACK_NAME=Candidate4Stack
-BUCKET_NAME=s3Candidate-4fLAbqwn7fBucket
+BUCKET_NAME=Candidate4Stack
 PEM_FILE_NAME=s3Candidate-4fLAbqwn7f
 USER=ubuntu
 
+. ~/.bash_profile
 
 aws cloudformation describe-stacks --stack-name $CFN_STACK_NAME  --region us-east-1 > ~/wordpress-ansible/cfn.out
 

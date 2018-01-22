@@ -11,7 +11,7 @@ Bash script plays a very cruscial role in setting up appropriate configuration f
 - Using sed, replaces MySql credential placeholders with values passed in CloudFormation template
 - Retrieves EC2 ssh2 key pair file from a dedicated S3 bucket
 - Generates ssh key pair for root user
-- Using ec2 ssh keypair and as a ubuntu user SCP's root uses public ssh key to wordpress server
+- Using ec2 ssh keypair and as a ubuntu user, SCP's root user's public ssh key to wordpress EC2
 - Using remote SSH session executes ssh_setup.sh. This scripts performs SSH setup for root user.
 - Launches playbook to configure wordpress in remote EC2 wordpress instance.
 

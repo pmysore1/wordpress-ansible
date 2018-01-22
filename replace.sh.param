@@ -38,8 +38,8 @@ chmod 400 $PEM_FILE_NAME
 
 ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
 
-scp -i $PEM_FILE_NAME ~/.ssh/id_rsa.pub $USER@$WORD_PRESS_HOST_IP:~
-ssh -t -i $PEM_FILE_NAME $USER@$WORD_PRESS_HOST_IP < ssh_setup.sh
+scp -i $PEM_FILE_NAME -o StrictHostKeyChecking=no ~/.ssh/id_rsa.pub $USER@$WORD_PRESS_HOST_IP:~
+ssh -t -o  StrictHostKeyChecking=no -i $PEM_FILE_NAME $USER@$WORD_PRESS_HOST_IP < ssh_setup.sh
 
 rm $PEM_FILE_NAME
 

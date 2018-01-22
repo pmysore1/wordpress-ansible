@@ -12,7 +12,7 @@ NEW_WP_MYSQL_PASSWORD=%new_wordpress_pass%
 NEW_MY_SQL_ROOT_PASSWORD=%root_password%
 
 
-CFN_STACK_NAME=Candidate4fLAbqwn7fstack
+CFN_STACK_NAME=Candidate4Stack
 BUCKET_NAME=s3Candidate-4fLAbqwn7fBucket
 PEM_FILE_NAME=s3Candidate-4fLAbqwn7f
 USER=ubuntu

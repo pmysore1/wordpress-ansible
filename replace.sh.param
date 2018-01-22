@@ -13,7 +13,7 @@ NEW_MY_SQL_ROOT_PASSWORD=%root_password%
 
 
 CFN_STACK_NAME=Candidate4Stack
-BUCKET_NAME=Candidate4Stack
+BUCKET_NAME=s3Candidate4Bucket
 PEM_FILE_NAME=s3Candidate-4fLAbqwn7f
 USER=ubuntu
 

@@ -17,10 +17,10 @@ Bash script plays a very cruscial role in setting up appropriate configuration f
 
 ## Ansible related playbook and configuration files
 Ansible setup includes roles based configuration process where a playbook is devided in multiple parts based on role it plays. Within this set up we have following roles.<br>
-server<br>
-php<br>
-mysql<br>
-wordpress<br>
+- server<br>
+- php<br>
+- mysql<br>
+- wordpress<br>
 
 ### server role
 server role is used for installing following components <br>

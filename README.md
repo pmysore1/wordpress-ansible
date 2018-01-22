@@ -8,3 +8,14 @@ php<br>
 mysql<br>
 wordpress<br>
 
+### server role
+server role is used for installing following components <br>
+- apache2<br>
+- php-mysql<br>
+- php<br>
+- python3-pip<br>
+- python3-mysqldb<br>
+- libapache2-mod-php<br>
+- Install MySQL database and configure root/admin password. This is passed as a parameter in CloudFormation temmplate 
+
+# bash Scripts

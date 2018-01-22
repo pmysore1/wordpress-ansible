@@ -1,7 +1,6 @@
 # wordpress-ansible
-Ansible and Worpress are hosted on two separate EC2 Ubuntu 16.04 image  instances
 
-This repository consists of all the required Ansible playbook and bash scripts needed for installing and configuring wordpress application on AWS Wordpress EC2 instance environment
+This repository consists of all the required Ansible playbook and bash scripts needed for installing and configuring wordpress application on AWS Wordpress EC2 instance environment.
 
 ## bash Scripts
 Bash script plays a very cruscial role in setting up appropriate configuration for ansible to provision remote EC2 wordpress instance. replace.sh.param is redirected as replace.sh within bootstap section of AnisbleInstance EC2 in CloudFormation template. replace.sh is executed as root during bootstrap process of stack creation. replace.sh scripts performs following tasks.<br> 

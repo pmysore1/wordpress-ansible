@@ -39,3 +39,8 @@ This roles performs following tasks<br>
 - Configure wordpress application server with database details described in above sections<br>
 
 ## bash Scripts
+Bash script plays a very cruscial role in setting up appropriate configuration for ansible to provision remote EC2 wordpress instance. replace.sh.param is redirected as replace.sh withing bootstap section of AnisbleInstance EC2 in CloudFormation template. Scripts performs following tasks<br>
+
+- Queries AWS for CloudFormtion stack output details.
+- Using output of above command and ###jq utility extracts the IP address of Ansible EC2 instance
+- Using sed, replaces MySql credential placeholders with values passed in CloudFormation template

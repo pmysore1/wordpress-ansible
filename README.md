@@ -26,10 +26,9 @@ php role installs following dependencies<br>
 ### mysql
 This role performs following tasks.<br>
 Values for below configuration is passed as parameter in CloudFormtion template.<br>
-Creates MySQL database<br>
-Creates user name for above database.<br>
-Creates password<br>
-Grants appropriate previliges<br>
+- Creates MySQL database<br>
+- Creates user name for above database.<br>
+- Creates password<br>
+- Grants appropriate previliges<br>
 
-
-# bash Scripts
+## bash Scripts

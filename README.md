@@ -3,6 +3,18 @@ Ansible and Worpress are hosted on two separate EC2 Ubuntu 16.04 image  instance
 
 This repository consists all required Ansible playbook and bash scripts needed for Installing and configuring wordpress application on AWS Wordpress EC2 instance environment
 
+## bash Scripts
+Bash script plays a very cruscial role in setting up appropriate configuration for ansible to provision remote EC2 wordpress instance. replace.sh.param is redirected as replace.sh within bootstap section of AnisbleInstance EC2 in CloudFormation template. replace.sh is executed as root during bootstrap process of stack creation. Scripts performs following tasks.<br> 
+
+- Queries AWS for CloudFormtion stack output details.
+- Using output of above command and ###jq utility extracts the IP address of Ansible EC2 instance
+- Using sed, replaces MySql credential placeholders with values passed in CloudFormation template
+- Retrieves EC2 ssh2 key pair file from a dedicated S3 bucket
+- Generates ssh key pair for root user
+- Using ec2 ssh keypair and as a ubuntu user SCP's root uses public ssh key to wordpress server
+- Using remote SSH session executes ssh_setup.sh. This scripts performs SSH setup for root user.
+- Launches playbook to configure wordpress in remote EC2 wordpress instance.
+
 ## Ansible related playbook and configuration files
 Ansible setup includes roles based configuration process where a playbook is devided in multiple parts based on role it plays. Within this set up we have following roles.<br>
 server<br>
@@ -38,9 +50,3 @@ This roles performs following tasks<br>
 - Dowloads wordpress tar ball from https://wordpress.org/latest.tar.gz and extracts to /var/www/<br>
 - Configure wordpress application server with database details described in above sections<br>
 
-## bash Scripts
-Bash script plays a very cruscial role in setting up appropriate configuration for ansible to provision remote EC2 wordpress instance. replace.sh.param is redirected as replace.sh withing bootstap section of AnisbleInstance EC2 in CloudFormation template. Scripts performs following tasks<br>
-
-- Queries AWS for CloudFormtion stack output details.
-- Using output of above command and ###jq utility extracts the IP address of Ansible EC2 instance
-- Using sed, replaces MySql credential placeholders with values passed in CloudFormation template
